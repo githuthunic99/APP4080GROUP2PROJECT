@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Taste & Tell</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: #f8f6f3;
+      color: #333;
+    }
+
+    header {
+      background: #fff;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #e85a4f;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e85a4f;
+    }
+
+    /* Profile Header */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      padding: 60px;
+      background: linear-gradient(135deg, #f7e8e8, #fff);
+    }
+
+    .profile-header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 40px;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .profile-info h2 {
+      font-size: 32px;
+      color: #333;
+    }
+
+    .profile-info p {
+      margin-top: 8px;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .profile-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .profile-stats div {
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .profile-stats h4 {
+      color: #e85a4f;
+      font-size: 20px;
+    }
+
+    /* Recipes Section */
+    .recipes-section {
+      padding: 50px 60px;
+    }
+
+    .recipes-section h3 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #333;
+      border-bottom: 3px solid #e85a4f;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .recipe-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .recipe-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .recipe-card .info {
+      padding: 15px;
+    }
+
+    .recipe-card h4 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .recipe-card p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+    }
+
+    footer p {
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Taste & Tell</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="add-recipe.html">Add Recipe</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="profile-header">
+    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400" alt="User Photo">
+    <div class="profile-info">
+      <h2>Chef Olivia Parker</h2>
+      <p>Food Blogger • Dessert Enthusiast • Traveler</p>
+
+      <div class="profile-stats">
+        <div>
+          <h4>25</h4>
+          <p>Recipes</p>
+        </div>
+        <div>
+          <h4>1.2k</h4>
+          <p>Followers</p>
+        </div>
+        <div>
+          <h4>340</h4>
+          <p>Likes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recipes-section">
+    <h3>Olivia’s Featured Recipes</h3>
+
+    <div class="recipe-grid">
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=600" alt="Chocolate Cake">
+        <div class="info">
+          <h4>Velvet Chocolate Cake</h4>
+          <p>Rich, moist, and indulgent — perfect for celebrations.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=600" alt="Strawberry Tart">
+        <div class="info">
+          <h4>Summer Strawberry Tart</h4>
+          <p>Fresh strawberries over a buttery crust — pure bliss.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1605475128023-9e341b8c63d6?w=600" alt="Pasta Alfredo">
+        <div class="info">
+          <h4>Classic Creamy Alfredo</h4>
+          <p>Simple yet elegant Italian comfort food.</p>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600" alt="Pancakes">
+        <div class="info">
+          <h4>Fluffy Sunday Pancakes</h4>
+          <p>Perfect breakfast served with honey and berries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Taste & Tell</h3>
+    <p>Discover. Create. Share. — A community for food lovers worldwide.</p>
+    <p>&copy; 2025 Taste & Tell. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

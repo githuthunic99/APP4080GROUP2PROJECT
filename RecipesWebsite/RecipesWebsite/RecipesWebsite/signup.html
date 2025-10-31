@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - Taste & Tell</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #fff8f2, #ffe7d1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 450px;
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .signup-container h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .signup-container p {
+      color: #777;
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    .input-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #ff914d;
+      outline: none;
+      box-shadow: 0 0 5px rgba(255, 145, 77, 0.4);
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, #ff914d, #ff6a00);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .signup-btn:hover {
+      background: linear-gradient(to right, #ff6a00, #ff914d);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+    }
+
+    .extra-links {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .extra-links a {
+      color: #ff6a00;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h1>Join Taste & Tell 🍴</h1>
+    <p>Create your free account and share your delicious recipes with the world!</p>
+
+    <form id="signupForm">
+      <div class="input-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your name" required>
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Create a password" required>
+      </div>
+
+      <div class="input-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Re-enter password" required>
+      </div>
+
+      <button type="submit" class="signup-btn">Sign Up</button>
+
+      <div class="extra-links">
+        <p>Already have an account? <a href="login.html">Login</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      // Dummy sign-up simulation
+      alert(`Welcome, ${name}! Your Taste & Tell account has been created 🍰`);
+      window.location.href = "login.html";
+    });
+  </script>
+
+</body>
+</html>

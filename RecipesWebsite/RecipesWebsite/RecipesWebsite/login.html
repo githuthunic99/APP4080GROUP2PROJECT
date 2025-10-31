@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Taste & Tell</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #fff8f2, #ffe7d1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-container h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .login-container p {
+      color: #777;
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    .input-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #ff914d;
+      outline: none;
+      box-shadow: 0 0 5px rgba(255, 145, 77, 0.4);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, #ff914d, #ff6a00);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background: linear-gradient(to right, #ff6a00, #ff914d);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+    }
+
+    .extra-links {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .extra-links a {
+      color: #ff6a00;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>Welcome Back!</h1>
+    <p>Log in to share your delicious recipes with the Taste & Tell community.</p>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="example@email.com" required>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+
+      <button type="submit" class="login-btn">Login</button>
+
+      <div class="extra-links">
+        <p>Don’t have an account? <a href="signup.html">Sign Up</a></p>
+        <p><a href="#">Forgot Password?</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Dummy check for now
+      if (email === "user@example.com" && password === "123456") {
+        alert("Login successful! Welcome back to Taste & Tell 🍴");
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid credentials. Try again!");
+      }
+    });
+  </script>
+
+</body>
+</html>
