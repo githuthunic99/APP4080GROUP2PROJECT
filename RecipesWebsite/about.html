@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Taste & Tell</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="recipe.js"></script>
+
+  <style>
+    /* ====== Global Layout ====== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #fffaf7;
+      color: #333;
+    }
+
+    /* ====== Header / Navbar ====== */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      padding: 15px 10%;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 1.6em;
+      font-weight: bold;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #333;
+      font-weight: bold;
+    }
+
+    .cta-btn {
+      background: white;
+      color: #ff7e5f;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* ====== About Page ====== */
+    main {
+      padding: 60px 10%;
+      background: #fffaf7;
+    }
+
+    .about-hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .about-text h2 {
+      font-size: 2em;
+      color: #ff7e5f;
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      line-height: 1.8;
+      font-size: 1em;
+      color: #555;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ====== What We Offer ====== */
+    .features {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .features h2 {
+      font-size: 1.8em;
+      margin-bottom: 30px;
+      color: #333;
+      border-left: 5px solid #ff7e5f;
+      display: inline-block;
+      padding-left: 10px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.03);
+    }
+
+    .feature-card h3 {
+      color: #ff7e5f;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    /* ====== Join Community Section ====== */
+    .community {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      color: white;
+      padding: 50px 10%;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .community h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    .community p {
+      font-size: 1em;
+      margin-bottom: 25px;
+      color: #fffaf7;
+    }
+
+    .join-btn {
+      background: white;
+      color: #ff7e5f;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .join-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      background: #333;
+      color: white;
+      padding: 50px 10% 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    footer h4 {
+      color: #ff7e5f;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      font-size: 0.9em;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #ff7e5f;
+    }
+
+    footer input[type="email"] {
+      padding: 8px;
+      width: 100%;
+      border-radius: 6px;
+      border: none;
+      margin-top: 5px;
+    }
+
+    .subscribe-btn {
+      background: #ff7e5f;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .footer-bottom {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #555;
+      padding-top: 20px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">🍽️ <span>Taste & Tell</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li id="login-link"><a href="login.html">Login</a></li>
+        <li id="profile-link" style="display:none;"><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+    <button class="cta-btn" onclick="window.location.href='add-recipe.html'">Submit Recipe</button>
+  </header>
+
+  <!-- About Page -->
+  <main>
+    <!-- Hero Section -->
+    <div class="about-hero">
+      <div class="about-text">
+        <h2>Our Story</h2>
+        <p>
+          Taste & Tell began with a simple idea — to make cooking fun, social, and easy to share. 
+          We’re more than just a recipe website — we’re a global kitchen where people come together to share what they love about food.
+        </p>
+        <p>
+          From traditional favorites to creative new dishes, we believe that every recipe has a story and every meal connects people. 
+          Whether you’re a beginner or an experienced cook, Taste & Tell is your companion in exploring, creating, and sharing delicious ideas.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Cooking together" />
+      </div>
+    </div>
+
+    <!-- What We Offer -->
+    <section class="features">
+      <h2>What We Offer</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>🍳 Recipe Discovery</h3>
+          <p>Explore hundreds of easy-to-follow recipes curated by food lovers worldwide. Filter by cuisine, meal type, or diet preferences.</p>
+        </div>
+        <div class="feature-card">
+          <h3>📸 Share Your Creations</h3>
+          <p>Upload your own recipes and inspire others with your creativity in the kitchen.</p>
+        </div>
+        <div class="feature-card">
+          <h3>💬 Community Connection</h3>
+          <p>Comment, rate, and connect with fellow cooks who share your love for good food and new flavors.</p>
+        </div>
+        <div class="feature-card">
+          <h3>🌍 Global Inspiration</h3>
+          <p>Discover diverse dishes from cultures around the world — all in one place.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Call-to-Action -->
+    <section class="community">
+      <h2>Join Our Foodie Family</h2>
+      <p>Become part of a growing community of cooks and food lovers. Share your recipes, get inspired, and celebrate the joy of cooking!</p>
+      <button class="join-btn" o

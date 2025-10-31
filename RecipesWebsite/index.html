@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taste & Tell Magazine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      background-color: #f9f8f6;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #d2691e;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #d2691e;
+    }
+
+    .cta-btn {
+      background-color: #d2691e;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .cta-btn:hover {
+      background-color: #b85b1a;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      padding: 40px 80px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') center/cover no-repeat;
+      border-radius: 12px;
+      position: relative;
+      color: white;
+      padding: 40px;
+      height: 420px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      border-radius: 12px;
+    }
+
+    .hero-main h1 {
+      position: relative;
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      max-width: 80%;
+    }
+
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .side-article {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      gap: 15px;
+      transition: transform 0.3s;
+    }
+
+    .side-article:hover { transform: scale(1.02); }
+
+    .side-article img {
+      width: 40%;
+      object-fit: cover;
+    }
+
+    .side-article div {
+      padding: 10px;
+    }
+
+    .side-article h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #d2691e;
+      margin-bottom: 5px;
+    }
+
+    .side-article p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 40px;
+      padding: 40px 80px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #d2691e;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #d2691e;
+      display: inline-block;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .recipe-card {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .recipe-card:hover { transform: translateY(-5px); }
+
+    .recipe-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .recipe-card .info {
+      padding: 15px;
+    }
+
+    .recipe-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .recipe-card p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .aside-card {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .aside-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    .aside-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: #d2691e;
+      margin-bottom: 10px;
+    }
+
+    .aside-card p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .aside-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .aside-btn {
+      background-color: #d2691e;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .aside-btn:hover {
+      background-color: #b85b1a;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #d2691e;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tags span {
+      background-color: #f3e6da;
+      color: #b85b1a;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+
+    .featured-chef {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .featured-chef img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    footer {
+    background: #222;
+    color: #eee;
+    padding: 60px 10% 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+  }
+
+  footer h4 {
+    color: #ff7e5f;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+  }
+
+  footer p, footer li, footer a {
+    font-size: 0.95em;
+    color: #ddd;
+    line-height: 1.8;
+    text-decoration: none;
+  }
+
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  footer a:hover {
+    color: #ffb88c;
+  }
+
+  footer input[type="email"] {
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+  }
+
+  .footer-bottom {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 0.9em;
+    border-top: 1px solid #444;
+    margin-top: 30px;
+  }
+
+  .subscribe-btn {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .subscribe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  </style>
+</head>
+
+<body>
+  <header>
+  <div class="logo">🍽️ <span>Taste & Tell</span></div>
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li id="login-link"><a href="login.html">Login</a></li>
+      <li id="profile-link" style="display:none;"><a href="profile.html">Profile</a></li>
+    </ul>
+  </nav>
+  <button class="cta-btn" onclick="window.location.href='add-recipe.html'">Submit Recipe</button>
+</header>
+
+
+  <section class="hero">
+  <div class="hero-main">
+    <h1>🍂 Autumn Harvest Specials</h1>
+    <p>Cozy soups, pies, and comfort recipes to warm your soul this season.</p>
+    <a href="recipes.html" class="explore-btn">Explore Recipes</a>
+  </div>
+
+  <div class="hero-side">
+    <a href="recipe.html" class="side-article">
+      <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19" alt="Spicy Thai Noodles">
+      <div class="side-content">
+        <h4>Spicy Thai Noodles</h4>
+        <p>A quick and flavorful noodle bowl for busy weeknights.</p>
+      </div>
+    </a>
+
+    <a href="recipe.html" class="side-article">
+      <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088" alt="Homemade Pizza Magic">
+      <div class="side-content">
+        <h4>Homemade Pizza Magic</h4>
+        <p>The secret to perfect crispy crusts and gooey cheese.</p>
+      </div>
+    </a>
+
+    <a href="recipe.html" class="side-article">
+      <img src="https://images.unsplash.com/photo-1604908177097-fde6f6119e29" alt="Berry Cheesecake Bliss">
+      <div class="side-content">
+        <h4>Berry Cheesecake Bliss</h4>
+        <p>Rich, creamy, and topped with summer berries.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+  <main>
+    <div>
+  <h2 class="section-title">Editor's Picks</h2>
+  <div class="recipe-grid">
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" alt="Garlic Butter Steak">
+      <div class="info">
+        <h3>Garlic Butter Steak</h3>
+        <p>Juicy & herbed perfection.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Avocado Toast Deluxe">
+      <div class="info">
+        <h3>Avocado Toast Deluxe</h3>
+        <p>Poached eggs & chili flakes.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1613145993481-1fc5a3ed3a18" alt="Chocolate Lava Cake">
+      <div class="info">
+        <h3>Chocolate Lava Cake</h3>
+        <p>Molten chocolate indulgence.</p>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" style="margin-top:40px;">Breakfast Ideas</h2>
+  <div class="recipe-grid">
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1565958011705-44e211a9e25e" alt="French Toast">
+      <div class="info">
+        <h3>French Toast</h3>
+        <p>Golden crispy and buttery.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1516685018646-549d8aa0ed23" alt="Berry Smoothie Bowl">
+      <div class="info">
+        <h3>Berry Smoothie Bowl</h3>
+        <p>Fresh fruit & granola blend.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1604908177097-fde6f6119e29" alt="Banana Pancakes">
+      <div class="info">
+        <h3>Banana Pancakes</h3>
+        <p>Fluffy & sweet morning treat.</p>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" style="margin-top:40px;">Lunch Favorites</h2>
+  <div class="recipe-grid">
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1572448862528-5ee664c39b9b" alt="Caesar Salad Wrap">
+      <div class="info">
+        <h3>Caesar Salad Wrap</h3>
+        <p>Crunchy and creamy delight.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1589308078055-3720f6eafe9d" alt="Grilled Chicken Sandwich">
+      <div class="info">
+        <h3>Grilled Chicken Sandwich</h3>
+        <p>Served with tangy sauce.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2" alt="Beef Burrito">
+      <div class="info">
+        <h3>Beef Burrito</h3>
+        <p>Loaded with flavor & spice.</p>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" style="margin-top:40px;">Dinner Specials</h2>
+  <div class="recipe-grid">
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Roast Chicken">
+      <div class="info">
+        <h3>Roast Chicken</h3>
+        <p>Juicy & seasoned to perfection.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1555992336-03a23c85fdfb" alt="Seafood Pasta">
+      <div class="info">
+        <h3>Seafood Pasta</h3>
+        <p>Creamy shrimp & garlic sauce.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1613145993481-1fc5a3ed3a18" alt="Beef Stroganoff">
+      <div class="info">
+        <h3>Beef Stroganoff</h3>
+        <p>Rich creamy mushroom sauce.</p>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" style="margin-top:40px;">Quick Meals</h2>
+  <div class="recipe-grid">
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1589308078055-3720f6eafe9d" alt="15-Minute Stir Fry">
+      <div class="info">
+        <h3>15-Minute Stir Fry</h3>
+        <p>Fast, healthy, and delicious.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Egg Fried Rice">
+      <div class="info">
+        <h3>Egg Fried Rice</h3>
+        <p>Simple comfort food fix.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088" alt="Mini Pizzas">
+      <div class="info">
+        <h3>Mini Pizzas</h3>
+        <p>Quick snacks for kids & adults.</p>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" style="margin-top:40px;">Group Meals</h2>
+  <div class="recipe-grid">
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="BBQ Party Platter">
+      <div class="info">
+        <h3>BBQ Party Platter</h3>
+        <p>Perfect for gatherings.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1604908177097-fde6f6119e29" alt="Family Lasagna">
+      <div class="info">
+        <h3>Family Lasagna</h3>
+        <p>Cheesy and layered love.</p>
+      </div>
+    </a>
+    <a href="recipe.html" class="recipe-card">
+      <img src="https://images.unsplash.com/photo-1555992336-03a23c85fdfb" alt="Buffet Chicken Wings">
+      <div class="info">
+        <h3>Buffet Chicken Wings</h3>
+        <p>Crispy, spicy, crowd favorite.</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+    <!-- ASIDE SIDEBAR START -->
+    <aside class="sidebar">
+      <div class="aside-card">
+        <h3>📬 Join Our Newsletter</h3>
+        <p>Get weekly inspiration, trending recipes, and secret chef tips right to your inbox!</p>
+        <input type="email" placeholder="Your email" class="aside-input">
+        <button class="aside-btn">Subscribe</button>
+      </div>
+
+      <div class="aside-card">
+        <h3>👩‍🍳 Share Your Recipe</h3>
+        <p>Got a family favorite or secret sauce? Submit your recipe and get featured on Taste & Tell.</p>
+        <button class="aside-btn">Share Now</button>
+      </div>
+
+      <div class="aside-card">
+        <h3>🌍 Stay Connected</h3>
+        <div class="social-links">
+          <a href="#">📸 Instagram</a>
+          <a href="#">📘 Facebook</a>
+          <a href="#">📌 Pinterest</a>
+          <a href="#">🎥 YouTube</a>
+        </div>
+      </div>
+
+      <div class="aside-card">
+        <h3>🔥 Trending Tags</h3>
+        <div class="tags">
+          <span>#HealthyMeals</span>
+          <span>#DessertGoals</span>
+          <span>#QuickDinner</span>
+          <span>#VeganVibes</span>
+          <span>#MealPrep</span>
+        </div>
+      </div>
+
+      <div class="aside-card">
+        <h3>⭐ Featured Chef</h3>
+        <div class="featured-chef">
+          <img src="https://images.unsplash.com/photo-1590080875831-f7b3a4b4f3c5" alt="Chef">
+          <div>
+            <h4>Chef Maria Lopez</h4>
+            <p>Known for her vibrant Latin fusion recipes and warm storytelling.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- ASIDE SIDEBAR END -->
+  </main>
+
+  <footer>
+  <div class="footer-section">
+    <h4>About Taste & Tell</h4>
+    <p>Taste & Tell is your online food magazine bringing home cooks, chefs, and food lovers together. Discover new recipes, share your favorites, and be inspired every day.</p>
+  </div>
+
+  <div class="footer-section">
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Submit a Recipe</a></li>
+      <li><a href="#">Latest Recipes</a></li>
+      <li><a href="#">Join Us</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-section">
+    <h4>Popular Categories</h4>
+    <ul>
+      <li><a href="#">Dinner Ideas</a></li>
+      <li><a href="#">Desserts</a></li>
+      <li><a href="#">Vegan & Vegetarian</a></li>
+      <li><a href="#">Drinks & Cocktails</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-section">
+    <h4>Join Our Newsletter</h4>
+    <p>Get exclusive recipes and food trends straight to your inbox!</p>
+    <input type="email" placeholder="Enter your email" />
+    <button class="subscribe-btn" style="margin-top:10px;">Subscribe</button>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Taste & Tell. All Rights Reserved | Designed with ❤️ by the Taste & Tell Team
+  </div>
+  </footer>
+</body>
+</html>
