@@ -19,3 +19,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+//inputs
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+//submit button
+const loginButton = document.getElementById('loginButton');
+
