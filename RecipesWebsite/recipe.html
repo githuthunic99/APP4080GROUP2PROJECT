@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipes - Taste & Tell</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taste & Tell - Recipe</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Open Sans', sans-serif;
       color: #333;
       background-color: #f9f8f6;
+      line-height: 1.7;
     }
 
     header {
       background-color: #fff;
       border-bottom: 1px solid #eee;
-      padding: 15px 50px;
+      padding: 20px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: all 0.3s ease;
     }
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: #d2691e;
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
     nav ul {
@@ -49,352 +46,293 @@
       transition: color 0.3s;
     }
 
-    nav a:hover, nav a.active {
-      color: #d2691e;
-    }
+    nav a:hover { color: #d2691e; }
 
-    .cta-btn {
-      background-color: #d2691e;
+    .hero {
+      position: relative;
+      height: 350px;
+      background: #ccc center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #fff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s, transform 0.2s;
     }
 
-    .cta-btn:hover {
-      background-color: #b85b1a;
-      transform: translateY(-2px);
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      font-style: italic;
+      opacity: 0.9;
     }
 
     main {
+      max-width: 1100px;
+      margin: 60px auto;
       display: grid;
-      grid-template-columns: 3fr 1fr;
-      gap: 40px;
-      padding: 40px 80px;
+      grid-template-columns: 2fr 1fr;
+      gap: 50px;
+      padding: 0 40px;
+    }
+
+    .ingredients, .instructions {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
     }
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 26px;
+      font-size: 24px;
       color: #d2691e;
-      margin-bottom: 15px;
       border-bottom: 2px solid #d2691e;
-      display: inline-block;
+      padding-bottom: 8px;
+      margin-bottom: 20px;
     }
 
-    .recipe-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 25px;
-      margin-bottom: 25px;
-    }
+    ul { list-style: disc; padding-left: 25px; }
+    ol { list-style: decimal; padding-left: 25px; }
+    li { margin-bottom: 12px; }
 
-    .recipe-card {
+    .author-box {
       background-color: #fff;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
-      text-decoration: none;
-      color: inherit;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
 
-    .recipe-card:hover { transform: translateY(-5px); }
-
-    .recipe-card img {
-      width: 100%;
-      height: 180px;
+    .author-box img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
       object-fit: cover;
     }
 
-    .recipe-card .info {
-      padding: 15px;
-    }
-
-    .recipe-card h3 {
+    .author-box h4 {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      color: #333;
-      margin-bottom: 8px;
+      color: #d2691e;
     }
 
-    .recipe-card p {
-      color: #666;
-      font-size: 14px;
+    aside {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      height: fit-content;
     }
 
-   .more-btn {
+    .share-btn {
       background-color: #d2691e;
       color: #fff;
       border: none;
-      padding: 10px 18px;
       border-radius: 25px;
-      cursor: pointer;
+      padding: 10px 20px;
       font-weight: 600;
-      margin: 15px 0;
-      display: block;
-      transition: background 0.3s, transform 0.2s;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 15px;
+      width: 100%;
     }
 
-    .more-btn:hover {
-      background-color: #b85b1a;
-      transform: translateY(-2px);
-    }
+    .share-btn:hover { background-color: #b85b1a; }
 
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    .aside-card {
+    footer {
       background-color: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 1px solid #eee;
+      padding: 50px 60px;
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
     }
 
-    .aside-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-    }
-
-    .aside-card h3 {
-      font-family: 'Playfair Display', serif;
+    footer h4 {
       color: #d2691e;
       margin-bottom: 10px;
     }
 
-    .aside-card p {
+    footer a {
       color: #555;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
       font-size: 14px;
-      margin-bottom: 15px;
-      line-height: 1.5;
     }
 
-    .aside-input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      margin-bottom: 10px;
+    footer a:hover { color: #d2691e; }
+
+    footer .bottom {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 30px;
     }
 
-    .aside-btn {
-      background-color: #d2691e;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s;
-      width: 100%;
+    @media (max-width: 900px) {
+      main { grid-template-columns: 1fr; }
+      header { padding: 15px 25px; }
     }
-
-    .aside-btn:hover {
-      background-color: #b85b1a;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tags span {
-      background-color: #f3e6da;
-      color: #b85b1a;
-      padding: 6px 10px;
-      border-radius: 20px;
-      font-size: 13px;
-    }
-
-    /* === FOOTER FIX === */
-   footer {
-  background: #222;
-  color: #eee;
-  padding: 60px 10% 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px;
-}
-
-footer h4 {
-  color: #ff7e5f;
-  margin-bottom: 15px;
-  font-size: 1.2em;
-}
-
-footer p, footer li, footer a {
-  font-size: 0.95em;
-  color: #ddd;
-  line-height: 1.8;
-  text-decoration: none;
-}
-
-footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-footer a:hover {
-  color: #ffb88c;
-}
-
-footer input[type="email"] {
-  padding: 10px;
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-  margin-top: 10px;
-}
-
-.footer-bottom {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding-top: 30px;
-  font-size: 0.9em;
-  border-top: 1px solid #444;
-  margin-top: 30px;
-}
-
-.subscribe-btn {
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.subscribe-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
   </style>
 </head>
+
 <body>
-<header>
-  <div class="logo">🍽️ <span>Taste & Tell</span></div>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="recipes.html" class="active">Recipes</a></li>
-      <li><a href="categories.html">Categories</a></li>
-      <li><a href="about.html">About</a></li>
-      <li id="login-link"><a href="login.html">Login</a></li>
-      <li id="profile-link" style="display:none;"><a href="profile.html">Profile</a></li>
-    </ul>
-  </nav>
-  <button class="cta-btn" onclick="window.location.href='add-recipe.html'">Submit Recipe</button>
-</header>
+  <header>
+    <div class="logo">🍽️ Taste & Tell</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <div class="main-content">
-
-    <!-- CUISINES -->
-    <h2 class="section-title">Cuisines</h2>
-    <div class="recipe-grid" id="cuisines-grid">
-      <a href="recipe.html?id=1" class="recipe-card">
-        <img src="images/recipesimg/italian.jpg" alt="Italian">
-        <div class="info"><h3>Italian</h3><p>Pasta, pizza, and risotto.</p></div>
-      </a>
-      <a href="recipe.html?id=2" class="recipe-card">
-        <img src="images/recipesimg/mexican.jpg" alt="Mexican">
-        <div class="info"><h3>Mexican</h3><p>Tacos, enchiladas, and spicy treats.</p></div>
-      </a>
-      <a href="recipe.html?id=3" class="recipe-card extra-cuisine" style="display:none;">
-        <img src="images/recipesimg/frnc.jpg" alt="French">
-        <div class="info"><h3>French</h3><p>Classic pastries and dishes.</p></div>
-      </a>
-      <a href="recipe.html?id=4" class="recipe-card extra-cuisine" style="display:none;">
-        <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357" alt="Indian">
-        <div class="info"><h3>Indian</h3><p>Curries, breads, and spices.</p></div>
-      </a>
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1 id="recipe-title">Recipe Title</h1>
+      <p id="recipe-desc">Short recipe description.</p>
     </div>
-    <button class="more-btn" onclick="toggleMore('cuisine')">More Cuisines</button>
+  </section>
 
-    <!-- MEAL TYPES -->
-    <h2 class="section-title">Meal Types</h2>
-    <div class="recipe-grid" id="meals-grid">
-      <a href="recipe.html?id=5" class="recipe-card"><img src="images/recipesimg/breakf.jpg"><div class="info"><h3>Breakfast</h3><p>Start your day with energy!</p></div></a>
-      <a href="recipe.html?id=6" class="recipe-card"><img src="images/recipesimg/lunch.jpg"><div class="info"><h3>Lunch</h3><p>Quick, filling midday meals.</p></div></a>
-      <a href="recipe.html?id=7" class="recipe-card extra-meal" style="display:none;"><img src="images/recipesimg/dindin.jpg"><div class="info"><h3>Dinner</h3><p>Comforting meals for evenings.</p></div></a>
-      <a href="recipe.html?id=8" class="recipe-card extra-meal" style="display:none;"><img src="images/recipesimg/snacks.jpg"><div class="info"><h3>Snacks</h3><p>Quick bites and finger foods.</p></div></a>
-      <a href="recipe.html?id=9" class="recipe-card extra-meal" style="display:none;"><img src="images/recipesimg/dsrt.jpg"><div class="info"><h3>Desserts</h3><p>Sweet treats for any time.</p></div></a>
-    </div>
-    <button class="more-btn" onclick="toggleMore('meal')">More Meal Types</button>
+  <main>
+    <div>
+      <div class="ingredients">
+        <h2 class="section-title">Ingredients</h2>
+        <ul id="ingredients-list"></ul>
+      </div>
 
-    <!-- QUICK MEALS -->
-    <h2 class="section-title">Quick Meals</h2>
-    <div class="recipe-grid" id="quick-grid">
-      <a href="recipe.html?id=10" class="recipe-card"><img src="images/indeximg/19.jpeg"><div class="info"><h3>15-Minute Stir Fry</h3><p>Fast, healthy, and delicious.</p></div></a>
-      <a href="recipe.html?id=11" class="recipe-card"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"><div class="info"><h3>Egg Fried Rice</h3><p>Simple comfort food fix.</p></div></a>
-      <a href="recipe.html?id=12" class="recipe-card extra-quick" style="display:none;"><img src="https://images.unsplash.com/photo-1543353071-873f17a7a088"><div class="info"><h3>Mini Pizzas</h3><p>Quick snacks for kids & adults.</p></div></a>
-    </div>
-    <button class="more-btn" onclick="toggleMore('quick')">More Quick Meals</button>
+      <div class="instructions">
+        <h2 class="section-title">Instructions</h2>
+        <ol id="instructions-list"></ol>
+      </div>
 
-    <!-- MEATY MEALS -->
-    <h2 class="section-title">Meaty Meals</h2>
-    <div class="recipe-grid" id="meaty-grid">
-      <a href="recipe.html?id=13" class="recipe-card"><img src="https://images.unsplash.com/photo-1551218808-94e220e084d2"><div class="info"><h3>Beef Burrito</h3><p>Loaded with flavor & spice.</p></div></a>
-      <a href="recipe.html?id=14" class="recipe-card extra-meaty" style="display:none;"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c"><div class="info"><h3>Roast Chicken</h3><p>Juicy & seasoned to perfection.</p></div></a>
-      <a href="recipe.html?id=15" class="recipe-card extra-meaty" style="display:none;"><img src="images/indeximg/18.jpg"><div class="info"><h3>Beef Stroganoff</h3><p>Rich creamy mushroom sauce.</p></div></a>
-    </div>
-    <button class="more-btn" onclick="toggleMore('meaty')">More Meaty Meals</button>
-
-    <!-- VEGAN OPTIONS -->
-    <h2 class="section-title">Vegan & Vegetarian</h2>
-    <div class="recipe-grid" id="vegan-grid">
-      <a href="recipe.html?id=16" class="recipe-card"><img src="images/recipesimg/vgnsldbw1.jpg"><div class="info"><h3>Vegan Salad Bowl</h3><p>Fresh, healthy, and colorful.</p></div></a>
-      <a href="recipe.html?id=17" class="recipe-card extra-vegan" style="display:none;"><img src="images/recipesimg/vgnstf.jpg"><div class="info"><h3>Vegan Stir Fry</h3><p>Quick plant-based meals.</p></div></a>
-      <a href="recipe.html?id=18" class="recipe-card extra-vegan" style="display:none;"><img src="images/recipesimg/tofu.jpg"><div class="info"><h3>Tofu Curry</h3><p>Spicy and creamy vegan delight.</p></div></a>
-    </div>
-    <button class="more-btn" onclick="toggleMore('vegan')">More Vegan Meals</button>
-
-  </div>
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="aside-card">
-      <h3>Search Recipes</h3>
-      <input class="aside-input" type="text" placeholder="Search...">
-      <button class="aside-btn">Search</button>
-    </div>
-    <div class="aside-card">
-      <h3>Popular Tags</h3>
-      <div class="tags">
-        <span>Vegan</span>
-        <span>Gluten-Free</span>
-        <span>Quick</span>
-        <span>Desserts</span>
-        <span>Healthy</span>
-        <span>Comfort Food</span>
+      <div class="author-box" id="author-box">
+        <img id="author-img" src="" alt="Author">
+        <div>
+          <h4 id="author-name"></h4>
+          <p id="author-bio"></p>
+        </div>
       </div>
     </div>
-  </aside>
-</main>
 
-<footer>
-  <!-- your existing footer unchanged -->
-</footer>
+    <aside>
+      <h3>Share this Recipe</h3>
+      <button class="share-btn" onclick="shareRecipe('facebook')">📤 Facebook</button>
+      <button class="share-btn" onclick="shareRecipe('twitter')">🐦 Twitter</button>
+      <button class="share-btn" onclick="shareRecipe('pinterest')">📌 Pinterest</button>
 
-<script>
-function toggleMore(type) {
-  let items = document.querySelectorAll(`.extra-${type}`);
-  items.forEach(item => {
-    item.style.display = item.style.display === 'none' ? 'block' : 'none';
-  });
-}
-</script>
+      <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;">
 
+      <h3>Subscribe for Weekly Recipes</h3>
+      <input type="email" placeholder="Enter your email" style="padding:10px; width:100%; border:1px solid #ccc; border-radius:5px;">
+      <button class="share-btn" style="margin-top:10px;">Subscribe</button>
+    </aside>
+  </main>
+
+  <footer>
+    <div>
+      <h4>About Taste & Tell</h4>
+      <p>Your go-to digital food magazine bringing chefs and food lovers together from around the world.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="index.html">Home</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="categories.html">Categories</a>
+      <a href="about.html">About</a>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <a href="#">Share Your Recipe</a>
+      <a href="#">Join Newsletter</a>
+      <a href="#">Write for Us</a>
+      <a href="#">Contact</a>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Pinterest</a>
+      <a href="#">YouTube</a>
+    </div>
+    <div class="bottom">
+      &copy; 2025 Taste & Tell Magazine. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- JS Section -->
+  <script>
+  async function loadRecipe() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    try {
+      const response = await fetch("recipes.json");
+      const recipes = await response.json();
+      const recipe = recipes.find(r => r.id === id);
+
+      if (!recipe) {
+        document.querySelector("main").innerHTML = "<p style='text-align:center;'>Recipe not found.</p>";
+        return;
+      }
+
+      document.title = `${recipe.title} - Taste & Tell`;
+      document.getElementById("recipe-title").textContent = recipe.title;
+      document.getElementById("recipe-desc").textContent = recipe.description;
+      document.getElementById("hero").style.background = `url('${recipe.image}') center/cover no-repeat`;
+
+      document.getElementById("ingredients-list").innerHTML =
+        recipe.ingredients.map(i => `<li>${i}</li>`).join("");
+      document.getElementById("instructions-list").innerHTML =
+        recipe.instructions.map(step => `<li>${step}</li>`).join("");
+
+      document.getElementById("author-img").src = recipe.authorImg;
+      document.getElementById("author-name").textContent = "By: " + recipe.author;
+      document.getElementById("author-bio").textContent = recipe.authorBio;
+    } catch (error) {
+      console.error("Error loading recipe:", error);
+      document.querySelector("main").innerHTML = "<p style='text-align:center;'>Error loading recipe data.</p>";
+    }
+  }
+
+  function shareRecipe(platform) {
+    const url = window.location.href;
+    const title = document.getElementById("recipe-title").textContent;
+    let shareUrl = "";
+
+    if (platform === "facebook") shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    if (platform === "twitter") shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+    if (platform === "pinterest") shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${title}`;
+
+    window.open(shareUrl, "_blank");
+  }
+
+  document.addEventListener("DOMContentLoaded", loadRecipe);
+  </script>
 </body>
 </html>
