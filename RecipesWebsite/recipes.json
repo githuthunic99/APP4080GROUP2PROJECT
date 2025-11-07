@@ -1,0 +1,218 @@
+[
+  {
+    "id": "spicy-thai-noodles",
+    "title": "Spicy Thai Noodles",
+    "description": "A fiery and flavorful noodle dish tossed with vegetables and Thai chili sauce.",
+    "image": "images/spicy-thai-noodles.jpg",
+    "ingredients": [
+      "200g rice noodles",
+      "2 tbsp soy sauce",
+      "1 tbsp chili paste",
+      "1 carrot, julienned",
+      "1 bell pepper, sliced",
+      "2 garlic cloves, minced",
+      "1 tbsp sesame oil"
+    ],
+    "instructions": [
+      "Cook noodles as per package instructions.",
+      "Stir-fry garlic and veggies in sesame oil.",
+      "Add chili paste and soy sauce.",
+      "Toss in the noodles and stir well.",
+      "Serve hot, topped with crushed peanuts."
+    ],
+    "author": "Chef Nina",
+    "authorImg": "images/author-nina.jpg",
+    "authorBio": "Loves adding a spicy twist to traditional Asian dishes."
+  },
+  {
+    "id": "homemade-pizza-magic",
+    "title": "Homemade Pizza Magic",
+    "description": "Crispy, cheesy homemade pizza that tastes just like a pizzeria classic.",
+    "image": "images/homemade-pizza-magic.jpg",
+    "ingredients": [
+      "2 cups flour",
+      "1 cup warm water",
+      "1 tsp yeast",
+      "1 cup tomato sauce",
+      "1 cup mozzarella cheese",
+      "Toppings of your choice"
+    ],
+    "instructions": [
+      "Prepare dough and let it rise for 1 hour.",
+      "Roll out and spread tomato sauce.",
+      "Add cheese and toppings.",
+      "Bake at 220°C for 15 minutes."
+    ],
+    "author": "Chef Marco",
+    "authorImg": "images/author-marco.jpg",
+    "authorBio": "Italian-born chef passionate about authentic pizza craft."
+  },
+  {
+    "id": "berry-cheesecake-bliss",
+    "title": "Berry Cheesecake Bliss",
+    "description": "A creamy cheesecake topped with fresh berries for a sweet delight.",
+    "image": "images/berry-cheesecake-bliss.jpg",
+    "ingredients": [
+      "200g cream cheese",
+      "1/2 cup sugar",
+      "2 eggs",
+      "1 tsp vanilla",
+      "1 cup mixed berries",
+      "1 graham cracker crust"
+    ],
+    "instructions": [
+      "Mix cream cheese, sugar, eggs, and vanilla.",
+      "Pour into crust and bake at 170°C for 30 mins.",
+      "Cool and top with berries before serving."
+    ],
+    "author": "Chef Lisa",
+    "authorImg": "images/author-lisa.jpg",
+    "authorBio": "Dessert queen known for her colorful and creative bakes."
+  },
+  {
+    "id": "garlic-butter-steak",
+    "title": "Garlic Butter Steak",
+    "description": "Juicy steak seared in rich garlic butter for a luxurious dinner treat.",
+    "image": "images/garlic-butter-steak.jpg",
+    "ingredients": [
+      "2 sirloin steaks",
+      "3 tbsp butter",
+      "3 garlic cloves, smashed",
+      "Salt and pepper"
+    ],
+    "instructions": [
+      "Season steaks with salt and pepper.",
+      "Sear each side for 3 minutes in butter and garlic.",
+      "Rest for 5 minutes and serve."
+    ],
+    "author": "Chef Tony",
+    "authorImg": "images/author-tony.jpg",
+    "authorBio": "Specializes in grilled perfection and bold flavors."
+  },
+  {
+    "id": "avocado-toast-deluxe",
+    "title": "Avocado Toast Deluxe",
+    "description": "Creamy avocado spread over toasted bread, topped with eggs and chili flakes.",
+    "image": "images/avocado-toast-deluxe.jpg",
+    "ingredients": [
+      "2 slices whole-grain bread",
+      "1 ripe avocado",
+      "1 egg",
+      "Chili flakes",
+      "Salt & pepper"
+    ],
+    "instructions": [
+      "Toast the bread.",
+      "Mash avocado with salt and pepper.",
+      "Spread and top with a fried egg and chili flakes."
+    ],
+    "author": "Chef Ava",
+    "authorImg": "images/author-ava.jpg",
+    "authorBio": "Healthy food enthusiast and breakfast lover."
+  },
+  {
+    "id": "chocolate-lava-cake",
+    "title": "Chocolate Lava Cake",
+    "description": "Rich chocolate cake with a gooey molten center.",
+    "image": "images/chocolate-lava-cake.jpg",
+    "ingredients": [
+      "100g dark chocolate",
+      "100g butter",
+      "2 eggs",
+      "1/4 cup sugar",
+      "2 tbsp flour"
+    ],
+    "instructions": [
+      "Melt chocolate and butter together.",
+      "Whisk eggs and sugar, then add chocolate mixture.",
+      "Add flour and pour into ramekins.",
+      "Bake at 200°C for 10 minutes."
+    ],
+    "author": "Chef Marie",
+    "authorImg": "images/author-marie.jpg",
+    "authorBio": "Pastry chef known for indulgent chocolate desserts."
+  },
+  {
+    "id": "french-toast",
+    "title": "French Toast",
+    "description": "Golden slices of egg-soaked bread served with maple syrup.",
+    "image": "images/french-toast.jpg",
+    "ingredients": [
+      "4 slices bread",
+      "2 eggs",
+      "1/2 cup milk",
+      "1 tsp cinnamon",
+      "Maple syrup"
+    ],
+    "instructions": [
+      "Whisk eggs, milk, and cinnamon.",
+      "Dip bread and cook each side until golden.",
+      "Serve with maple syrup."
+    ],
+    "author": "Chef Claire",
+    "authorImg": "images/author-claire.jpg",
+    "authorBio": "Brings comfort food classics to life with French finesse."
+  },
+  {
+    "id": "berry-smoothie-bowl",
+    "title": "Berry Smoothie Bowl",
+    "description": "Refreshing smoothie bowl topped with granola and fruits.",
+    "image": "images/berry-smoothie-bowl.jpg",
+    "ingredients": [
+      "1 banana",
+      "1/2 cup mixed berries",
+      "1/2 cup yogurt",
+      "Granola for topping"
+    ],
+    "instructions": [
+      "Blend banana, berries, and yogurt.",
+      "Pour into a bowl and top with granola and fresh fruits."
+    ],
+    "author": "Chef Jade",
+    "authorImg": "images/author-jade.jpg",
+    "authorBio": "Loves crafting colorful and nutritious breakfast bowls."
+  },
+  {
+    "id": "banana-pancakes",
+    "title": "Banana Pancakes",
+    "description": "Fluffy pancakes infused with sweet ripe bananas.",
+    "image": "images/banana-pancakes.jpg",
+    "ingredients": [
+      "1 banana",
+      "1 egg",
+      "1/2 cup flour",
+      "1/2 cup milk",
+      "1 tsp baking powder"
+    ],
+    "instructions": [
+      "Mash banana and mix with wet ingredients.",
+      "Add dry ingredients and whisk.",
+      "Cook pancakes on medium heat until golden."
+    ],
+    "author": "Chef Leo",
+    "authorImg": "images/author-leo.jpg",
+    "authorBio": "Weekend brunch specialist with a flair for fun recipes."
+  },
+  {
+    "id": "caesar-salad-wrap",
+    "title": "Caesar Salad Wrap",
+    "description": "Crispy lettuce and chicken wrapped with creamy Caesar dressing.",
+    "image": "images/caesar-salad-wrap.jpg",
+    "ingredients": [
+      "2 tortillas",
+      "1 cup lettuce",
+      "1/2 cup grilled chicken",
+      "2 tbsp Caesar dressing",
+      "Parmesan cheese"
+    ],
+    "instructions": [
+      "Mix all ingredients and wrap in tortillas.",
+      "Grill for 2 minutes per side and serve."
+    ],
+    "author": "Chef Emma",
+    "authorImg": "images/author-emma.jpg",
+    "authorBio": "Nutrition-focused chef creating tasty, on-the-go meals."
+  }
+]
+
+
