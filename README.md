@@ -96,3 +96,4 @@ Built with ❤️ and JavaScript
 ---
 
 Would you like me to make this **visually styled for GitHub** (with emojis, headings, and code highlights), or keep it simple like a plain text readme?
+The login should not be seen in the login page
