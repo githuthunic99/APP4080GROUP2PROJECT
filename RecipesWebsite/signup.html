@@ -124,8 +124,13 @@
 
     <form id="signupForm">
       <div class="input-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" placeholder="Your name" required>
+        <label for="name">First Name</label>
+        <input type="text" id="fname" placeholder="First name" required>
+      </div>
+
+      <div class="input-group">
+        <label for="name">Last Name</label>
+        <input type="text" id="lname" placeholder="Last name" required>
       </div>
 
       <div class="input-group">
@@ -143,7 +148,7 @@
         <input type="password" id="confirm-password" placeholder="Re-enter password" required>
       </div>
 
-      <button type="submit" class="signup-btn">Sign Up</button>
+      <button type="submit" id="signup" class="signup-btn">Sign Up</button>
 
       <div class="extra-links">
         <p>Already have an account? <a href="login.html">Login</a></p>
@@ -151,25 +156,7 @@
     </form>
   </div>
 
-  <script>
-    document.getElementById('signupForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirm-password').value;
-
-      if (password !== confirmPassword) {
-        alert("Passwords do not match!");
-        return;
-      }
-
-      // Dummy sign-up simulation
-      alert(`Welcome, ${name}! Your Taste & Tell account has been created 🍰`);
-      window.location.href = "login.html";
-    });
-  </script>
+ <script src="js/signup.js"></script>
 
 </body>
 </html>

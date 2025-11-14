@@ -1,76 +1,38 @@
 // recipe.js
+async function loadRecipe() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id"); // recipe ID from query string
 
-document.addEventListener("DOMContentLoaded", () => {
-  const recipeContainer = document.getElementById("recipe-details");
+  try {
+    const response = await fetch(`http://localhost:5000/recipes/${id}`);
+    if (!response.ok) throw new Error("Recipe not found");
+    const recipe = await response.json();
 
-  // Get recipe ID from URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const recipeId = urlParams.get("id");
+    document.title = `${recipe.title} - Taste & Tell`;
+    document.getElementById("recipe-title").textContent = recipe.title;
+    document.getElementById("recipe-desc").textContent = recipe.description;
+    document.getElementById("hero").style.background = `url('${recipe.image}') center/cover no-repeat`;
 
-  // Get recipes from localStorage
-  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    document.getElementById("ingredients-list").innerHTML =
+      recipe.ingredients.map(i => `<li>${i}</li>`).join("");
 
-  // Find the recipe
-  const recipe = recipes.find(r => r.id == recipeId);
+    document.getElementById("instructions-list").innerHTML =
+      recipe.instructions.map(step => `<li>${step}</li>`).join("");
 
-  if (!recipe) {
-    recipeContainer.innerHTML = `
-      <div class="not-found">
-        <h2>Recipe Not Found 🍽️</h2>
-        <p>It looks like this recipe doesn't exist or was removed.</p>
-        <a href="index.html" class="back-home">← Go Back Home</a>
-      </div>
-    `;
-    return;
+    document.getElementById("author-img").src = recipe.authorImg;
+    document.getElementById("author-name").textContent = "By: " + recipe.author;
+    document.getElementById("author-bio").textContent = recipe.authorBio;
+  } catch (error) {
+    console.error("Error loading recipe:", error);
+    document.querySelector("main").innerHTML =
+      "<p style='text-align:center;'>Recipe not found.</p>";
   }
+}
 
-  // Render recipe details
-  recipeContainer.innerHTML = `
-    <div class="recipe-header">
-      <h1>${recipe.title}</h1>
-      <p class="meta">By <strong>${recipe.author}</strong> • ${recipe.date}</p>
-    </div>
+// Load recipe on page load
+window.addEventListener("DOMContentLoaded", loadRecipe);
 
-    <div class="recipe-image">
-      <img src="${recipe.image}" alt="${recipe.title}">
-    </div>
-
-    <div class="recipe-info">
-      <h2>Category</h2>
-      <p>${recipe.category}</p>
-
-      <h2>Ingredients</h2>
-      <ul>
-        ${recipe.ingredients
-          .split("\n")
-          .map(item => `<li>${item.trim()}</li>`)
-          .join("")}
-      </ul>
-
-      <h2>Instructions</h2>
-      <p>${recipe.instructions.replace(/\n/g, "<br>")}</p>
-    </div>
-
-    <div class="recipe-footer">
-      <button id="shareRecipe" class="share-btn">📤 Share Recipe</button>
-      <a href="index.html" class="back-home">← Back to Home</a>
-    </div>
-  `;
-
-  // Share button logic
-  document.getElementById("shareRecipe").addEventListener("click", async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: recipe.title,
-          text: `Check out this recipe on Taste & Tell: ${recipe.title}`,
-          url: window.location.href
-        });
-      } catch (err) {
-        console.log("Share cancelled");
-      }
-    } else {
-      alert("Sharing is not supported on your device/browser.");
-    }
-  });
-});
+// Example share function
+function shareRecipe(platform) {
+  alert(`Sharing on ${platform} is not implemented yet.`);
+}

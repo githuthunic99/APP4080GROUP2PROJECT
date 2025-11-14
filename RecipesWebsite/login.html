@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Taste & Tell</title>
   <style>
+    /* Keep all your existing CSS exactly as it is */
     * {
       margin: 0;
       padding: 0;
@@ -142,21 +143,8 @@
     </form>
   </div>
 
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      // Dummy check for now
-      if (email === "user@example.com" && password === "123456") {
-        alert("Login successful! Welcome back to Taste & Tell 🍴");
-        window.location.href = "index.html";
-      } else {
-        alert("Invalid credentials. Try again!");
-      }
-    });
-  </script>
+  <!-- Link the external JS -->
+  <script src="js/login.js"></script>
 
 </body>
 </html>
