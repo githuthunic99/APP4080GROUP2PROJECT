@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Taste & Tell</title>
   <style>
-    /* Keep all your existing CSS exactly as it is */
     * {
       margin: 0;
       padding: 0;
@@ -32,32 +31,15 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .login-container h1 {
-      font-size: 28px;
-      color: #333;
-      margin-bottom: 10px;
-    }
+    .login-container h1 { font-size: 28px; color: #333; margin-bottom: 10px; }
 
-    .login-container p {
-      color: #777;
-      margin-bottom: 25px;
-      font-size: 15px;
-    }
+    .login-container p { color: #777; margin-bottom: 25px; font-size: 15px; }
 
-    .input-group {
-      text-align: left;
-      margin-bottom: 20px;
-    }
+    .input-group { text-align: left; margin-bottom: 20px; }
 
     .input-group label {
       display: block;
@@ -100,11 +82,7 @@
       box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
     }
 
-    .extra-links {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #666;
-    }
+    .extra-links { margin-top: 15px; font-size: 14px; color: #666; }
 
     .extra-links a {
       color: #ff6a00;
@@ -112,13 +90,11 @@
       font-weight: 600;
     }
 
-    .extra-links a:hover {
-      text-decoration: underline;
-    }
+    .extra-links a:hover { text-decoration: underline; }
   </style>
 </head>
-<body>
 
+<body>
   <div class="login-container">
     <h1>Welcome Back!</h1>
     <p>Log in to share your delicious recipes with the Taste & Tell community.</p>
@@ -126,15 +102,15 @@
     <form id="loginForm">
       <div class="input-group">
         <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="example@email.com" required>
+        <input type="email" id="email" required />
       </div>
 
       <div class="input-group">
         <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" required>
+        <input type="password" id="password" required />
       </div>
 
-      <button type="submit" class="login-btn">Login</button>
+      <button type="submit" class="login-btn" id="loginButton">Login</button>
 
       <div class="extra-links">
         <p>Don’t have an account? <a href="signup.html">Sign Up</a></p>
@@ -143,8 +119,50 @@
     </form>
   </div>
 
-  <!-- Link the external JS -->
-  <script src="js/login.js"></script>
+  <!-- Firebase Auth Script -->
+  <script type="module">
+    // Firebase CDN imports
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBijcnaTYNZRn2u2wWE7lyUMCcCsfTo6FY",
+      authDomain: "app4080group2project.firebaseapp.com",
+      projectId: "app4080group2project",
+      storageBucket: "app4080group2project.firebasestorage.app",
+      messagingSenderId: "665369119153",
+      appId: "1:665369119153:web:3cf2cfebcd554312ffd590",
+      measurementId: "G-6Y73049YEB"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Handle login
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Login successful 🎉");
+          window.location.href = "index.html"; // redirect page
+        })
+        .catch((error) => {
+          let msg = "Login failed.";
+          if (error.code === "auth/wrong-password") msg = "Incorrect password.";
+          if (error.code === "auth/user-not-found") msg = "User not found.";
+          if (error.code === "auth/invalid-email") msg = "Invalid email format.";
+          if (error.code === "auth/too-many-requests") msg = "Too many attempts. Try again later.";
+
+          alert(msg);
+        });
+    });
+  </script>
 
 </body>
 </html>

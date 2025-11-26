@@ -31,14 +31,8 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .signup-container h1 {
@@ -156,7 +150,73 @@
     </form>
   </div>
 
- <script src="js/signup.js"></script>
+
+  <!-- Firebase SDKs INSIDE the same file -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBijcnaTYNZRn2u2wWE7lyUMCcCsfTo6FY",
+      authDomain: "app4080group2project.firebaseapp.com",
+      projectId: "app4080group2project",
+      storageBucket: "app4080group2project.firebasestorage.app",
+      messagingSenderId: "665369119153",
+      appId: "1:665369119153:web:3cf2cfebcd554312ffd590",
+      measurementId: "G-6Y73049YEB"
+    };
+
+    // Init Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const form = document.getElementById("signupForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fname = document.getElementById("fname").value.trim();
+      const lname = document.getElementById("lname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirm-password").value.trim();
+
+      // Password check
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        alert("Account created successfully!");
+
+        // Store the name temporarily
+        localStorage.setItem("userFullName", `${fname} ${lname}`);
+
+        // Redirect to login
+        window.location.href = "login.html";
+
+      } catch (error) {
+        console.error(error.code);
+
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            alert("This email is already registered.");
+            break;
+          case "auth/invalid-email":
+            alert("Invalid email format.");
+            break;
+          case "auth/weak-password":
+            alert("Password must be at least 6 characters.");
+            break;
+          default:
+            alert("Error: " + error.message);
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
+
